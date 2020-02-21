@@ -11,9 +11,11 @@
     <link href="~/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/assets/css/layout.min.css" rel="stylesheet" type="text/css">
     <link href="~/assets/css/components.min.css" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+
     <!-- /global stylesheets -->
     <!-- Core JS files -->
     <script src="~/assets/js/main/jquery.min.js"></script>
@@ -22,9 +24,25 @@
     <script src="~/assets/js/ui/ripple.min.js"></script>
     <!-- /core JS files -->
     <!-- Theme JS files -->
-    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/assets/js/datatables/datatables.min.js"></script>
+    <script src="~/assets/js/datatables/extensions/select.min.js"></script>
+    <script src="~/assets/js/selects/select2.min.js"></script>
+    <script src="~/assets/js/datatables/datatables_basic.js"></script>
+
+    <script src="~/assets/js/moment/moment.min.js"></script>
+    <script src="~/assets/js/pickers/daterangepicker.js"></script>
+    <script src="~/assets/js/pickers/anytime.min.js"></script>
+    <script src="~/assets/js/pickers/pickadate/picker.js"></script>
+    <script src="~/assets/js/pickers/pickadate/picker.date.js"></script>
+    <script src="~/assets/js/pickers/pickadate/picker.time.js"></script>
+    <script src="~/assets/js/pickers/pickadate/legacy.js"></script>
     <!-- /theme JS files -->
 
+    <script src="~/assets/js/app.js"></script>
+    <script src="~/assets/js/pickers/pickadate/picker_date.js"></script>
+    <script src="~/assets/js/modals/components_modals.js"></script>
 </head>
 
 
@@ -79,15 +97,10 @@
             <!-- Content area -->
             <div class="content">
 
-                <!-- Basic card -->
-                <div class="card">
-                    <div class="card-body">
-                        <partial name="_CookieConsentPartial" />
+                <partial name="_CookieConsentPartial" />
 
-                        @RenderBody()
-                    </div>
-                </div>
-                <!-- /basic card -->
+                @RenderBody()
+
             </div>
             <!-- /content area -->
             <!-- Footer -->
