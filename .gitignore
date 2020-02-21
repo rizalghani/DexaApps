@@ -65,3 +65,9 @@ obj/Debug/netcoreapp2.2/Razor/Views/Test/Delete.cshtml.g.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Test/Details.cshtml.g.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Test/Edit.cshtml.g.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Test/Index.cshtml.g.cs
+.vs/DexaApps/config/applicationhost.config
+.vs/DexaApps/v16/.suo
+.vs/DexaApps/v16/Server/sqlite3/db.lock
+.vs/DexaApps/v16/Server/sqlite3/storage.ide
+.vs/DexaApps/v16/Server/sqlite3/storage.ide-shm
+.vs/DexaApps/v16/Server/sqlite3/storage.ide-wal
