@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DexaApps.Models.Outlets>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Outlet List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutletName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int no = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@no</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OutletName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.OutletID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.OutletID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.OutletID">Delete</a>
+                    </td>
+                </tr>
+                no++;
+            }
+        }
+    </tbody>
+</table>

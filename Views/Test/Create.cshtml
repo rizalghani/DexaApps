@@ -1,0 +1,60 @@
+﻿@model DexaApps.Models.Customers
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Customers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutletID" class="control-label"></label>
+                <select class="form-control" asp-for="OutletID" asp-items="@(new SelectList(Model.OutletList, "OutletID", "OutletName"))">
+                    <option value="">Select Outlet</option>
+                </select>
+
+                @*<select asp-for="OutletID" class="form-control">
+                    <option value="">Select Outlet</option>
+                    @foreach (var item in Model.OutletList)
+                    {
+                        <option value="@item.OutletID">@item.OutletName</option>
+                    }
+                </select>*@
+                <span asp-validation-for="OutletID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
