@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DexaApps.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class OutletController : Controller
     {
         private readonly DexaDbContext _context;

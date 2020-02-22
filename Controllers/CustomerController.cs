@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using DexaApps.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DexaApps.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly DexaDbContext _context;

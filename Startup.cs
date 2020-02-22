@@ -82,7 +82,6 @@ namespace DexaApps
                 routes.MapRoute(
                     name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
-                //template: "{controller=Customer}/{action=Create}/{id?}");
             });
         }
     }
