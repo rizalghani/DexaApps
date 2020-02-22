@@ -42,6 +42,8 @@ namespace DexaApps
 
             services.AddDefaultIdentity<AppUser>(ops =>
             {
+                ops.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.@";
+                ops.User.RequireUniqueEmail = true;
                 ops.Password.RequireDigit = false;
                 ops.Password.RequiredLength = 6;
                 ops.Password.RequireLowercase = false;
