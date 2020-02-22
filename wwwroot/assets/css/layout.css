@@ -373,6 +373,65 @@ body {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg); }
 
+.nav-sidebar-icons-reverse .nav-link {
+  padding-right: 3.5rem; }
+  .nav-sidebar-icons-reverse .nav-link i {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.25rem;
+    margin-right: 0; }
+
+.nav-sidebar-icons-reverse .nav-item-submenu .nav-link {
+  padding-right: 4.5rem; }
+  .nav-sidebar-icons-reverse .nav-item-submenu .nav-link:after {
+    right: 3.25rem; }
+
+.nav-sidebar-icons-reverse .nav-group-sub .nav-link {
+  padding-left: 2.5rem; }
+  .nav-sidebar-icons-reverse .nav-group-sub .nav-link i {
+    top: 0.625rem; }
+
+.nav-sidebar-icons-reverse .nav-group-sub .nav-group-sub .nav-link {
+  padding-left: 3.75rem; }
+
+.nav-sidebar-icons-reverse .nav-group-sub .nav-group-sub .nav-group-sub .nav-link {
+  padding-left: 5rem; }
+
+.nav-sidebar-bordered > .nav-item + .nav-item:not(.nav-item-divider) {
+  margin-bottom: 0; }
+
+.sidebar .card:first-child .nav-sidebar-bordered {
+  padding-top: 0; }
+  .sidebar .card:first-child .nav-sidebar-bordered > .nav-item:first-child,
+  .sidebar .card:first-child .nav-sidebar-bordered > .nav-item-header:first-child {
+    border-top: 0; }
+
+.sidebar .card:last-child .nav-sidebar-bordered {
+  padding-bottom: 0; }
+  .sidebar .card:last-child .nav-sidebar-bordered > .nav-item:last-child,
+  .sidebar .card:last-child .nav-sidebar-bordered > .nav-item-header:last-child {
+    border-bottom: 0; }
+
+.sidebar-dark .nav-sidebar-bordered > .nav-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .sidebar-dark .nav-sidebar-bordered > .nav-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+.sidebar-dark .nav-sidebar-bordered > .nav-item-header {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0; }
+
+.sidebar-light .nav-sidebar-bordered > .nav-item {
+  border-top: 1px solid #ddd; }
+  .sidebar-light .nav-sidebar-bordered > .nav-item:last-child {
+    border-bottom: 1px solid #ddd; }
+
+.sidebar-light .nav-sidebar-bordered > .nav-item-header {
+  background-color: #fafafa;
+  border-top: 1px solid #ddd;
+  margin: 0; }
+
 .sidebar-mobile-toggler {
   display: -ms-flexbox;
   display: flex;
@@ -516,6 +575,9 @@ body {
   border-radius: 0.1875rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 
+.sidebar-fixed .sidebar-content {
+  z-index: 1041; }
+
 @media (min-width: 768px) {
   .sidebar-xs .sidebar-main {
     width: 3.5rem; }
@@ -605,16 +667,14 @@ body {
     .sidebar-xs .sidebar-main.sidebar-light .nav-sidebar > .nav-item-submenu > .nav-group-sub {
       background-color: #fcfcfc;
       border: 0 solid rgba(0, 0, 0, 0.125); }
-  .sidebar-xs .sidebar-main.sidebar-fixed {
-    z-index: 1029; }
-    .sidebar-xs .sidebar-main.sidebar-fixed .nav-sidebar > .nav-item-submenu:hover > .nav-group-sub, .sidebar-xs .sidebar-main.sidebar-fixed .nav-sidebar > .nav-item-submenu:focus > .nav-group-sub {
-      position: fixed;
-      left: 3.5rem;
-      top: 3.12503rem;
-      bottom: 0;
-      width: 16.875rem;
-      overflow-y: auto;
-      border-radius: 0; }
+  .sidebar-xs .sidebar-main.sidebar-fixed .nav-sidebar > .nav-item-submenu:hover > .nav-group-sub, .sidebar-xs .sidebar-main.sidebar-fixed .nav-sidebar > .nav-item-submenu:focus > .nav-group-sub {
+    position: fixed;
+    left: 3.5rem;
+    top: 3.12503rem;
+    bottom: 0;
+    width: 16.875rem;
+    overflow-y: auto;
+    border-radius: 0; }
   .sidebar-xs .navbar-lg:first-child ~ .page-content .sidebar-fixed.sidebar-main .nav-sidebar > .nav-item-submenu:hover > .nav-group-sub, .sidebar-xs .navbar-lg:first-child ~ .page-content .sidebar-fixed.sidebar-main .nav-sidebar > .nav-item-submenu:focus > .nav-group-sub {
     top: 3.37503rem; }
   .sidebar-xs .navbar-sm:first-child ~ .page-content .sidebar-fixed.sidebar-main .nav-sidebar > .nav-item-submenu:hover > .nav-group-sub, .sidebar-xs .navbar-sm:first-child ~ .page-content .sidebar-fixed.sidebar-main .nav-sidebar > .nav-item-submenu:focus > .nav-group-sub {
@@ -994,7 +1054,7 @@ body {
     border-left-width: 1px; }
 
 .sidebar-user-material .sidebar-user-material-body {
-  background: url(../../../../../../global_assets/images/backgrounds/user_bg3.jpg) center center no-repeat;
+  background: url(../Global/images/backgrounds/user_bg3.jpg) center center no-repeat;
   background-size: cover; }
 
 .sidebar-dark .sidebar-user-material .collapse {

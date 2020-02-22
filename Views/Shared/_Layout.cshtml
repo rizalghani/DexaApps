@@ -7,42 +7,96 @@
     <title>@ViewData["Title"] - Dexa</title>
 
     <!-- Global stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <link href="~/assets/css/layout.min.css" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/components.min.css" rel="stylesheet" type="text/css">
-    <link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">*@
+    <link href="~/Assets/Global/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/buttons.dataTables.min.css" rel="stylesheet" />
 
     <!-- /global stylesheets -->
     <!-- Core JS files -->
-    <script src="~/assets/js/main/jquery.min.js"></script>
-    <script src="~/assets/js/main/bootstrap.bundle.min.js"></script>
-    <script src="~/assets/js/loaders/blockui.min.js"></script>
-    <script src="~/assets/js/ui/ripple.min.js"></script>
+    <script src="~/Assets/Global/js/main/jquery.min.js"></script>
+    <script src="~/Assets/Global/js/main/bootstrap.bundle.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/loaders/blockui.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/ui/ripple.min.js"></script>
     <!-- /core JS files -->
     <!-- Theme JS files -->
-    <script src="~/assets/js/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/assets/js/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="~/assets/js/datatables/datatables.min.js"></script>
-    <script src="~/assets/js/datatables/extensions/select.min.js"></script>
-    <script src="~/assets/js/selects/select2.min.js"></script>
-    <script src="~/assets/js/datatables/datatables_basic.js"></script>
+    <script src="~/Assets/Global/js/plugins/visualization/d3/d3.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/styling/switchery.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script src="~/Assets/Global/js/plugins/ui/moment/moment.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/daterangepicker.js"></script>
 
-    <script src="~/assets/js/moment/moment.min.js"></script>
-    <script src="~/assets/js/pickers/daterangepicker.js"></script>
-    <script src="~/assets/js/pickers/anytime.min.js"></script>
-    <script src="~/assets/js/pickers/pickadate/picker.js"></script>
-    <script src="~/assets/js/pickers/pickadate/picker.date.js"></script>
-    <script src="~/assets/js/pickers/pickadate/picker.time.js"></script>
-    <script src="~/assets/js/pickers/pickadate/legacy.js"></script>
+    <!-- DatatableTheme JS files -->
+    <script src="~/Assets/Global/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/tables/datatables/extensions/fixed_columns.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/selects/select2.min.js"></script>
+
+    @*<script src="~/Assets/js/jquery.dataTables.min.js"></script>*@
+    <script src="~/Assets/js/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/js/buttons.colVis.min.js"></script>
+    <script src="~/Assets/js/buttons.flash.min.js"></script>
+    <script src="~/Assets/js/jszip.min.js"></script>
+    <script src="~/Assets/js/pdfmake.min.js"></script>
+    <script src="~/Assets/js/vfs_fonts.js"></script>
+    <script src="~/Assets/js/buttons.html5.min.js"></script>
+    <script src="~/Assets/js/buttons.print.min.js"></script>
+
+    <!--Button and lada and tada Theme JS files -->
+    <script src="~/Assets/Global/js/plugins/buttons/spin.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/buttons/ladda.min.js"></script>
+
+    <!-- Theme JS files -->
+    <script src="~/Assets/Global/js/plugins/notifications/sweet_alert.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/styling/uniform.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/styling/switchery.min.js"></script>
+
+    <!-- Theme JS files -->
+    <script src="~/Assets/Global/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/selects/select2.min.js"></script>
+
+    <!-- Theme JS files -->
+    <script src="~/Assets/Global/js/plugins/ui/moment/moment.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/daterangepicker.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/anytime.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/pickadate/picker.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script src="~/Assets/Global/js/plugins/pickers/pickadate/legacy.js"></script>
+    <script src="~/Assets/Global/js/plugins/notifications/jgrowl.min.js"></script>
+
+    <!-- Theme JS files -->
+    <script src="~/Assets/Global/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+
+    <!-- Theme JS files -->
+    <script src="~/Assets/Global/js/plugins/uploaders/dropzone.min.js"></script>
+
+
+    <script src="~/Assets/js/app.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/dashboard.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/datatables_responsive.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/components_buttons.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/extra_sweetalert.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/form_select2.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/picker_date.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/uploader_bootstrap.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/uploader_dropzone.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/components_popups.js"></script>
+    <script src="~/Assets/Global/js/demo_pages/form_validation.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/tags/tagsinput.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/tags/tokenfield.min.js"></script>
+    <script src="~/Assets/Global/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
     <!-- /theme JS files -->
-
-    <script src="~/assets/js/app.js"></script>
-    <script src="~/assets/js/pickers/pickadate/picker_date.js"></script>
-    <script src="~/assets/js/modals/components_modals.js"></script>
 </head>
 
 
@@ -53,7 +107,7 @@
     <div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static">
         <div class="navbar-brand">
             <a asp-controller="Home" asp-action="Index" class="d-inline-block">
-                <img src="~/assets/images/logo_light.png" alt="">
+                <img src="~/Assets/Global/images/logo_light.png" alt="">
             </a>
         </div>
 

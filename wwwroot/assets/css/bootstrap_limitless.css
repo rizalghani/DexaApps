@@ -1379,7 +1379,6 @@ select[size] {
  *
  * ---------------------------------------------------------------------------- */
 .custom-control {
-  min-height: 1.25003rem;
   margin-bottom: 0.5rem; }
   .custom-control:last-child {
     margin-bottom: 0; }
@@ -2203,21 +2202,15 @@ select[size] {
     color: #999; }
 
 .navbar .btn-group .dropdown-menu-right {
+  /*rtl:begin:ignore*/
   right: 0;
-  left: auto; }
+  left: auto;
+  /*rtl:end:ignore*/ }
 
 .dropdown-user .navbar-nav-link,
 .dropdown-user .navbar-nav-link > span {
   padding-top: 0.4375rem;
   padding-bottom: 0.4375rem; }
-
-.dropdown-user .navbar-nav-link > span {
-  display: inline-block;
-  padding-left: 0.625rem; }
-
-.dropdown-user .navbar-nav-link > img {
-  max-height: 2.12503rem;
-  vertical-align: top; }
 
 .img-flag {
   height: 0.875rem;

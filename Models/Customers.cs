@@ -36,9 +36,9 @@ namespace DexaApps.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime EndDate { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         public string CreateBy { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public string UpdateBy { get; set; }
 
         [Required(ErrorMessage = "{0} Can't be null !")]

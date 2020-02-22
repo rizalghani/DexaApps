@@ -1,4 +1,5 @@
 ﻿@model List<Customers>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,67 +17,42 @@
         </div>
     </div>
     <div class="card-body">
-        <form asp-controller="Customer" asp-action="Create" method="post">
-            <table class="table" id="participantTable">
+        <form asp-action="Create" class="form-inline">
+            <div>
+                <input type="text" name="CustomerName" placeholder="Customer Name" class="form-control mr-3" style="width:150px;" />
+                <input type="text" name="Address" placeholder="Address" class="form-control mr-3" style="width:250px;" />
+                <input type="text" name="Code" placeholder="Code" class="form-control mr-3" style="width:100px;" />
+                <input name="StartDate" type="text" class="form-control daterange-single" value="" />
+                <input name="EndDate" type="text" class="form-control daterange-single" value="" />
+                <select name="OutletID" class="form-control">
+                    <option value="">Select Outlet</option>
+                    @foreach (var item in ViewBag.OutletList)
+                    {
+                        <option value="@item.OutletID">@item.OutletName</option>
+                    }
+                </select>
+
+
+                <button type="button" id="btn-add" class="btn btn-success ml-2"><i class="icon-plus22 mr-2"></i>Add</button>
+            </div>
+
+            <hr />
+            <table class="table table-bordered">
                 <thead>
-                    <tr>
+                    <tr class="text-center font-weight-bold">
                         <th>Customer Name</th>
                         <th>Address</th>
                         <th>Code</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Outlet Name</th>
-                        <th class="text-center">Action</th>
+                        <th>Outlet</th>
+                        @*<th></th>*@
                     </tr>
                 </thead>
-                <tr class="participantRow">
-                    @{
-                        int flag = 0;
-                        foreach (Customers item in Model)
-                        {
-                            <td>
-                                <input name="item[@flag].CustomerName" type="text" placeholder="Customer Name" class="form-control required-entry">
-                            </td>
-                            <td>
-                                <input name="item[@flag].Address" type="text" placeholder="Address" class="form-control required-entry">
-                            </td>
-                            <td>
-                                <input name="item[@flag].Code" type="text" placeholder="Code" class="form-control required-entry">
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-calendar22"></i></span>
-                                    </span>
-                                    <input type="text" name="item[@flag].StartDate" class="form-control daterange-single" value="">
-                                </div>
-
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-calendar22"></i></span>
-                                    </span>
-                                    <input type="text" name="item[@flag].EndDate" class="form-control daterange-single" placeholder="Start Date" value="">
-                                </div>
-                            </td>
-                            <td>
-                                <select class="form-control" name="item[@flag].OutletID" asp-items="@(new SelectList(item.OutletList, "OutletID", "OutletName"))">
-                                    <option value="">Select Outlet</option>
-                                </select>
-                            </td>
-                            <td class="text-center"><button class="btn btn-danger remove" type="button">Remove</button></td>
-                            flag++;
-                        }
-                    }
-                </tr>
-                <tr id="addButtonRow">
-                    <td>
-                        <button class="btn btn-large btn-success add" type="button">Add</button>
-                        <button class="btn btn-large btn-primary save" type="submit">Save</button>
-                    </td>
-                </tr>
+                <tbody id="tbody-create">
+                </tbody>
             </table>
+            <button type="submit" id="btn-save" class="btn btn-primary ml-2 d-none"><i class="icon-database-add mr-2"></i>Save</button>
         </form>
     </div>
 </div>
@@ -84,68 +60,51 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
+            var flag = 0;
 
-            /* Variables */
-            var p = $("#participants").val();
-            var row = $(".participantRow");
+            $("#btn-add").on("click", function () {
+                var _customername = $('input[name="CustomerName"]').val();
+                var _address = $('input[name="Address"]').val();
+                var _code = $('input[name="Code"]').val();
+                var _startdate = $('input[name="StartDate"]').val();
+                var _endate = $('input[name="EndDate"]').val();
+                var _outletid = $('input[name="OutletID"]').val();
 
-            /* Functions */
-            function getP() {
-                p = $("#participants").val();
-            }
+                var _input_customername = '<input type="text" name="item[' + flag + '].CustomerName" class="form-control border-0 py-0" value="' + _customername + '" readonly />';
+                var _input_address = '<input type="text" name="item[' + flag + '].Address" class="form-control border-0 py-0" value="' + _address + '" readonly />';
+                var _input_code = '<input type="text" name="item[' + flag + '].Code" class="form-control border-0 py-0" value="' + _code + '" readonly />';
+                var _input_startdate = '<input type="text" name="item[' + flag + '].StartDate" class="form-control border-0 py-0" value="' + _startdate + '" readonly />';
+                var _input_enddate = '<input type="text" name="item[' + flag + '].EndDate" class="form-control border-0 py-0" value="' + _endate + '" readonly />';
+                var _input_outletid = '<input type="text" name="item[' + flag + '].OutletID" class="form-control border-0 py-0" value="' + _outletid + '" readonly />';
 
-            function addRow() {
-                row.clone(true, true).appendTo("#participantTable");
-            }
+                var _tr = '<tr id=' + flag + '><td>' + _input_customername + '</td>' +
+                    '</td><td>' + _input_address + '</input>' +
+                    '</td><td>' + _input_code + '</input>' +
+                    '</td><td>' + _input_startdate + '</input>' +
+                    '</td><td>' + _input_enddate + '</input>' +
+                    '</td><td>' + _input_outletid + '</input>' +
+                    //'</td><td><button type="button" class="btn btn-danger btn-delete"><i class="icon-trash"></i></button></input>' +
+                    '</td></tr>'
 
-            function removeRow(button) {
-                button.closest("tr").remove();
-            }
-            /* Doc ready */
-            $(".add").on('click', function () {
-                getP();
-                if ($("#participantTable tr").length < 17) {
-                    addRow();
-                    var i = Number(p) + 1;
-                    $("#participants").val(i);
-                }
-                $(this).closest("tr").appendTo("#participantTable");
-                if ($("#participantTable tr").length === 3) {
-                    $(".remove").hide();
-                } else {
-                    $(".remove").show();
-                }
-            });
-            $(".remove").on('click', function () {
-                getP();
-                if ($("#participantTable tr").length === 3) {
-                    //alert("Can't remove row.");
-                    $(".remove").hide();
-                } else if ($("#participantTable tr").length - 1 == 3) {
-                    $(".remove").hide();
-                    removeRow($(this));
-                    var i = Number(p) - 1;
-                    $("#participants").val(i);
-                } else {
-                    removeRow($(this));
-                    var i = Number(p) - 1;
-                    $("#participants").val(i);
+
+                ss
+                if (_customername != "" && _outletid != "") {
+                    $("#tbody-create").append(_tr);
+                    $("#btn-save").removeClass("d-none");
+                    reset();
+                    flag++;
                 }
             });
-            $("#participants").change(function () {
-                var i = 0;
-                p = $("#participants").val();
-                var rowCount = $("#participantTable tr").length - 2;
-                if (p > rowCount) {
-                    for (i = rowCount; i < p; i += 1) {
-                        addRow();
-                    }
-                    $("#participantTable #addButtonRow").appendTo("#participantTable");
-                } else if (p < rowCount) {
-                }
-            });
+
+            function reset() {
+                $('input[name="CustomerName"]').val('');
+                $('input[name="Address"]').val('');
+                $('input[name="Code"]').val('');
+                $('input[name="StartDate"]').val('');
+                $('input[name="EndDate"]').val('');
+                $('input[name="OutletID"]').val('');
+            }
+
         });
-
-
     </script>
 }
