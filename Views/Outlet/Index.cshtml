@@ -5,38 +5,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Outlet List</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>
-                @Html.DisplayNameFor(model => model.OutletName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{ int no = 1;
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>@no</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OutletName)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.OutletID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.OutletID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.OutletID">Delete</a>
-                    </td>
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold text-primary"><i class="icon-location4 mr-1"></i> Outlet List</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="reload"></a>
+                <a class="list-icons-item" data-action="remove"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <a asp-action="Create" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-plus22"></i></b> Create</a>
+        <table id="table-index-customer" class="table table-bordered table-hover" style="width:100%">
+            <thead class="bg-primary text-center">
+                <tr class="font-weight-bold">
+                    <th>
+                        No
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OutletID)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OutletName)
+                    </th>
+                    <th class="text-center">Actions</th>
                 </tr>
-                no++;
-            }
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                @{
+                    int no = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center" width="3%">
+                                @no
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.OutletID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OutletName)
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@item.OutletID"><i class="icon-database-edit2 mr-1"></i>Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.OutletID">Delete <i class="icon-folder-remove ml-1"></i></a>
+                            </td>
+                        </tr>
+                        no++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

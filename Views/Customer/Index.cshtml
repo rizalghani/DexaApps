@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DexaApps.Models.Customers>
+﻿@*@model IEnumerable<DexaApps.Models.Customers>*@
+@model CustomerViewModel
 
 
 @{
@@ -9,7 +10,7 @@
 
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Overview Customer List</h5>
+        <h5 class="card-title font-weight-bold text-primary">Overview Customer List</h5>
         <div class="header-elements">
             <div class="list-icons">
                 <a class="list-icons-item" data-action="reload"></a>
@@ -19,10 +20,7 @@
     </div>
 
     <div class="card-body">
-        <a asp-action="Create" class="btn btn-primary"><i class=""></i>Create</a>
-
-        @*<button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal_large">Create <i class="icon-plus2 ml-2"></i></button>*@
-        
+        <a asp-action="Create" class="btn btn-primary btn-labeled btn-labeled-left"><b><i class="icon-plus22"></i></b> Create</a>
         <table id="table-index-customer" class="table table-bordered table-hover" style="width:100%">
             <thead class="bg-primary text-center">
                 <tr class="font-weight-bold">
@@ -30,25 +28,25 @@
                         No
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CustomerID)
+                        @Html.DisplayNameFor(model => model.Customers.CustomerID)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CustomerName)
+                        @Html.DisplayNameFor(model => model.Customers.CustomerName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Address)
+                        @Html.DisplayNameFor(model => model.Customers.Address)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Code)
+                        @Html.DisplayNameFor(model => model.Customers.Code)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.StartDate)
+                        @Html.DisplayNameFor(model => model.Customers.StartDate)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.EndDate)
+                        @Html.DisplayNameFor(model => model.Customers.EndDate)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.OutletID) ID
+                        @Html.DisplayNameFor(model => model.Customers.OutletID)
                     </th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -56,7 +54,7 @@
             <tbody>
                 @{
                     int no = 1;
-                    foreach (var item in Model)
+                    foreach (var item in Model.ListCustomer)
                     {
                         <tr>
                             <td class="text-center" width="3%">
@@ -98,8 +96,8 @@
 
 <!-- modal -->
 @*<div id="modal_large" class="modal fade" tabindex="-1">
-    <partial name="_ModalCreate" />
-</div>*@
+        <partial name="_ModalCreate" />
+    </div>*@
 <!-- modal -->
 
 <script type="text/javascript">

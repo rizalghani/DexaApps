@@ -10,8 +10,9 @@ namespace DexaApps.Models
     public class Customers
     {
         [Key]
+        [Required(ErrorMessage = "{0} is required !")]
         [Display(Name = "Customer ID")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long CustomerID { get; set; }
 
         [Display(Name = "Customer Name")]

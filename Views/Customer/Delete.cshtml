@@ -1,0 +1,88 @@
+﻿@model DexaApps.Models.Customers
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content">
+
+    <!-- Form inputs -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title font-weight-bold text-danger"><i class="icon-stack2 mr-1"></i> Remove Customer</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <fieldset class="mb-3">
+                <legend class="text-uppercase font-size-sm font-weight-bold">Are you sure you want to delete this ?</legend>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="CustomerID" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-3">
+                        <input asp-for="CustomerID" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="CustomerName" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-3">
+                        <input asp-for="CustomerName" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="Code" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-3">
+                        <input asp-for="Code" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="Address" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-5">
+                        <input asp-for="Address" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="StartDate" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-3">
+                        <div class="input-group">
+                            <input type="text" asp-for="StartDate" class="form-control" value="@(Model.StartDate != null ? Model.StartDate.ToString("dd/MM/yyyy") : "")" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="EndDate" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-3">
+                        <div class="input-group">
+                            <input type="text" asp-for="EndDate" class="form-control" value="@(Model.EndDate != null ? Model.EndDate.ToString("dd/MM/yyyy") : "")" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="OutletID" class="col-form-label col-lg-2 font-weight-bold"></label>
+                    <div class="col-lg-3">
+                        <input asp-for="OutletID" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="CustomerID" />
+                        <a asp-action="Index" class="btn btn-link"><i class="icon-backward mr-1"></i> Back to List</a>
+                        <button type="submit" class="btn btn-danger btn-labeled btn-labeled-left"><b><i class="icon-database-remove mr-1"></i></b> Delete</button>
+                    </form>
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+</div>

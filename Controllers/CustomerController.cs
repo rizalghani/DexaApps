@@ -24,22 +24,21 @@ namespace DexaApps.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Customers.ToListAsync();
-            return View(data);
+            CustomerViewModel _allData = new CustomerViewModel()
+            {
+                ListCustomer = await _context.Customers.ToListAsync()
+            };
+
+            return View(_allData);
         }
 
         public IActionResult Create()
         {
-            List<Customers> customers = new List<Customers>();
-            customers.Add(new Customers());
-            foreach (var item in customers)
-            {
-                item.OutletList = _context.Outlets.ToList();
-            }
+            CustomerViewModel cvm = new CustomerViewModel();
+            cvm.Customers = new Customers();
+            cvm.ListOutlets = _context.Outlets.ToList();
 
-            ViewBag.OutletList = _context.Outlets.ToList();
-
-            return View(customers);
+            return View(cvm);
         }
 
         [HttpPost]
@@ -49,7 +48,7 @@ namespace DexaApps.Controllers
             {
                 foreach (Customers model in item)
                 {
-                    model.CreateBy = User.Identity.Name != null ? User.Identity.Name : "User";
+                    model.CreateBy = User.Identity.Name != null ? User.Identity.Name : "System";
                     model.CreateDate = DateTime.Now;
 
                     _context.Add(model);
@@ -59,6 +58,71 @@ namespace DexaApps.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Edit(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            Customers customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            ViewBag.OutlateList = _context.Outlets.ToList();
+
+            return View(customer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(long? id, Customers customers)
+        {
+            if (customers != null)
+            {
+
+                customers.UpdateBy = User.Identity.Name != null ? User.Identity.Name : "System";
+                customers.UpdateDate = DateTime.Now;
+
+                _context.Update(customers);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(customers);
+        }
+
+        public async Task<IActionResult> Delete(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var customers = await _context.Customers
+                .FirstOrDefaultAsync(m => m.CustomerID == id);
+            if (customers == null)
+            {
+                return NotFound();
+            }
+
+            return View(customers);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(long? id)
+        {
+            var customers = await _context.Customers.FindAsync(id);
+            _context.Customers.Remove(customers);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool CustomerExists(long? id)
+        {
+            return _context.Customers.Any(e => e.CustomerID == id);
+        }
     }
 }

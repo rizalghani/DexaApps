@@ -5,28 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>Outlets</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="OutletName" class="control-label"></label>
-                <input asp-for="OutletName" class="form-control" />
-                <span asp-validation-for="OutletName" class="text-danger"></span>
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title font-weight-bold text-primary"><i class="icon-location4 mr-1"></i> Create Outlet</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+                <a class="list-icons-item" data-action="reload"></a>
+                <a class="list-icons-item" data-action="remove"></a>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+
+    <div class="card-body">
+        <form asp-action="Create">
+            <div class="row pl-3">
+                <div class="col-md-2 pb-0 mb-0">
+                    <div class="form-group">
+                        <label asp-for="OutletName" class="control-label font-weight-bold"></label>
+                        <div class="input-group">
+                            <input type="text" asp-for="OutletName" class="form-control" value="" placeholder="Outlet Name">
+                        </div>
+                        <span asp-validation-for="OutletName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <a asp-action="Index" class="btn btn-link"><i class="icon-backward mr-1"></i> Back to List</a>
+                        <button type="submit" id="btn-save" class="btn bg-primary btn-labeled btn-labeled-left"><b><i class="icon-database-add"></i></b> SAVE</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

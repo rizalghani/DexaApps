@@ -7,7 +7,6 @@
     <title>@ViewData["Title"] - Dexa</title>
 
     <!-- Global stylesheets -->
-    @*<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">*@
     <link href="~/Assets/Global/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
     <link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/Assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
@@ -24,21 +23,12 @@
     <script src="~/Assets/Global/js/plugins/loaders/blockui.min.js"></script>
     <script src="~/Assets/Global/js/plugins/ui/ripple.min.js"></script>
     <!-- /core JS files -->
-    <!-- Theme JS files -->
-    <script src="~/Assets/Global/js/plugins/visualization/d3/d3.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/visualization/d3/d3_tooltip.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/styling/switchery.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-    <script src="~/Assets/Global/js/plugins/ui/moment/moment.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/pickers/daterangepicker.js"></script>
 
     <!-- DatatableTheme JS files -->
     <script src="~/Assets/Global/js/plugins/tables/datatables/datatables.min.js"></script>
     <script src="~/Assets/Global/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/tables/datatables/extensions/fixed_columns.min.js"></script>
     <script src="~/Assets/Global/js/plugins/forms/selects/select2.min.js"></script>
 
-    @*<script src="~/Assets/js/jquery.dataTables.min.js"></script>*@
     <script src="~/Assets/js/dataTables.buttons.min.js"></script>
     <script src="~/Assets/js/buttons.colVis.min.js"></script>
     <script src="~/Assets/js/buttons.flash.min.js"></script>
@@ -47,38 +37,16 @@
     <script src="~/Assets/js/vfs_fonts.js"></script>
     <script src="~/Assets/js/buttons.html5.min.js"></script>
     <script src="~/Assets/js/buttons.print.min.js"></script>
-
-    <!--Button and lada and tada Theme JS files -->
-    <script src="~/Assets/Global/js/plugins/buttons/spin.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/buttons/ladda.min.js"></script>
-
-    <!-- Theme JS files -->
-    <script src="~/Assets/Global/js/plugins/notifications/sweet_alert.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/selects/select2.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/styling/uniform.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/styling/switchery.min.js"></script>
-
-    <!-- Theme JS files -->
-    <script src="~/Assets/Global/js/plugins/extensions/jquery_ui/interactions.min.js"></script>
     <script src="~/Assets/Global/js/plugins/forms/selects/select2.min.js"></script>
 
-    <!-- Theme JS files -->
+
     <script src="~/Assets/Global/js/plugins/ui/moment/moment.min.js"></script>
     <script src="~/Assets/Global/js/plugins/pickers/daterangepicker.js"></script>
     <script src="~/Assets/Global/js/plugins/pickers/anytime.min.js"></script>
     <script src="~/Assets/Global/js/plugins/pickers/pickadate/picker.js"></script>
     <script src="~/Assets/Global/js/plugins/pickers/pickadate/picker.date.js"></script>
     <script src="~/Assets/Global/js/plugins/pickers/pickadate/picker.time.js"></script>
-    <script src="~/Assets/Global/js/plugins/pickers/pickadate/legacy.js"></script>
-    <script src="~/Assets/Global/js/plugins/notifications/jgrowl.min.js"></script>
 
-    <!-- Theme JS files -->
-    <script src="~/Assets/Global/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
-
-    <!-- Theme JS files -->
     <script src="~/Assets/Global/js/plugins/uploaders/dropzone.min.js"></script>
 
 
@@ -86,20 +54,11 @@
     <script src="~/Assets/Global/js/demo_pages/dashboard.js"></script>
     <script src="~/Assets/Global/js/demo_pages/datatables_responsive.js"></script>
     <script src="~/Assets/Global/js/demo_pages/components_buttons.js"></script>
-    <script src="~/Assets/Global/js/demo_pages/extra_sweetalert.js"></script>
     <script src="~/Assets/Global/js/demo_pages/form_select2.js"></script>
     <script src="~/Assets/Global/js/demo_pages/picker_date.js"></script>
-    <script src="~/Assets/Global/js/demo_pages/uploader_bootstrap.js"></script>
-    <script src="~/Assets/Global/js/demo_pages/uploader_dropzone.js"></script>
-    <script src="~/Assets/Global/js/demo_pages/components_popups.js"></script>
     <script src="~/Assets/Global/js/demo_pages/form_validation.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/tags/tagsinput.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/tags/tokenfield.min.js"></script>
-    <script src="~/Assets/Global/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
     <!-- /theme JS files -->
 </head>
-
-
 
 <body>
 
@@ -126,14 +85,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a asp-controller="Home" asp-action="Index" class="navbar-nav-link">
-                        <i class="icon-stack2 mr-2"></i>
+                    <a asp-controller="Outlet" asp-action="Index" class="navbar-nav-link">
+                        <i class="icon-location4 mr-2"></i>
                         Outlet
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a asp-controller="Home" asp-action="Index" class="navbar-nav-link">
-                        <i class="icon-person mr-2"></i>
+                    <a asp-controller="Customer" asp-action="Index" class="navbar-nav-link">
+                        <i class="icon-stack2 mr-2"></i>
                         Customer
                     </a>
                 </li>

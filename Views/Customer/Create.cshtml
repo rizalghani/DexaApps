@@ -1,4 +1,5 @@
-﻿@model List<Customers>
+﻿@*@model List<Customers>*@
+@model CustomerViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +9,7 @@
 
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title"><i class="icon-person mr-1"></i>Create Customer</h5>
+        <h5 class="card-title font-weight-bold text-primary"><i class="icon-stack2 mr-1"></i> Create Customer</h5>
         <div class="header-elements">
             <div class="list-icons">
                 <a class="list-icons-item" data-action="reload"></a>
@@ -17,42 +18,109 @@
         </div>
     </div>
     <div class="card-body">
-        <form asp-action="Create" class="form-inline">
-            <div>
-                <input type="text" name="CustomerName" placeholder="Customer Name" class="form-control mr-3" style="width:150px;" />
-                <input type="text" name="Address" placeholder="Address" class="form-control mr-3" style="width:250px;" />
-                <input type="text" name="Code" placeholder="Code" class="form-control mr-3" style="width:100px;" />
-                <input name="StartDate" type="text" class="form-control daterange-single" value="" />
-                <input name="EndDate" type="text" class="form-control daterange-single" value="" />
-                <select name="OutletID" class="form-control">
-                    <option value="">Select Outlet</option>
-                    @foreach (var item in ViewBag.OutletList)
-                    {
-                        <option value="@item.OutletID">@item.OutletName</option>
-                    }
-                </select>
-
-
-                <button type="button" id="btn-add" class="btn btn-success ml-2"><i class="icon-plus22 mr-2"></i>Add</button>
+        <form asp-action="Create">
+            <div class="row pl-3">
+                <div class="col-md-2 pb-0 mb-0">
+                    <div class="form-group">
+                        <label asp-for="Customers.CustomerID" class="font-weight-semibold">Customer ID</label>
+                        <div class="input-group">
+                            <input asp-for="Customers.CustomerID" type="text" name="CustomerID" class="form-control onlynumber" value="" placeholder="Customer ID">
+                        </div>
+                        <span asp-validation-for="Customers.CustomerID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2 pb-0 mb-0">
+                    <div class="form-group">
+                        <label class="font-weight-semibold">Customer Name</label>
+                        <div class="input-group">
+                            <input type="text" name="CustomerName" class="form-control" value="" placeholder="Customer Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pb-0 mb-0">
+                    <div class="form-group">
+                        <label class="font-weight-semibold">Code</label>
+                        <div class="input-group">
+                            <input type="text" name="Code" class="form-control" value="" placeholder="Code">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pb-0 mb-0">
+                    <div class="form-group">
+                        <label class="d-block font-weight-semibold">Start Date</label>
+                        <div class="input-group">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                            </span>
+                            <input type="text" name="StartDate" class="form-control daterange-single" value="" placeholder="Start Date">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pb-0 mb-0">
+                    <div class="form-group">
+                        <label class="font-weight-semibold">End Date</label>
+                        <div class="input-group">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                            </span>
+                            <input type="text" name="EndDate" class="form-control daterange-single" value="" placeholder="End Date">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pb-0 mb-0 mt-3 pt-2">
+                    <div class="form-group float-left">
+                        <div class="input-group">
+                            <div class="btn-group btn-group-toggle">
+                                <button type="button" id="btn-add" class="btn bg-success btn-labeled btn-labeled-left"><b><i class="icon-plus-circle2"></i></b> ADD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pl-3">
+                <div class="col-md-6 pb-0 mb-0">
+                    <div class="form-group">
+                        <label class="font-weight-semibold">Address </label>
+                        <div class="input-group">
+                            <input type="text" name="Address" class="form-control" value="" placeholder="Address">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pb-0 mb-0">
+                    <div class="form-group">
+                        <label class="font-weight-semibold">Outlet Name</label>
+                        <select id="select_type" name="OutletID" class="form-control select" asp-items="@(new SelectList(Model.ListOutlets, "OutletID", "OutletName"))" data-fouc>
+                            <option value="">Select a Outlet</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2 pb-0 mb-0 mt-3 pt-2">
+                    <div class="form-group float-left">
+                        <div class="input-group">
+                            <div class="btn-group btn-group-toggle">
+                                <button type="submit" id="btn-save" class="btn bg-primary btn-labeled btn-labeled-left d-none"><b><i class="icon-database-add"></i></b> SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <hr />
             <table class="table table-bordered">
                 <thead>
                     <tr class="text-center font-weight-bold">
+                        <th>Customer ID</th>
                         <th>Customer Name</th>
                         <th>Address</th>
                         <th>Code</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Outlet</th>
-                        @*<th></th>*@
                     </tr>
                 </thead>
                 <tbody id="tbody-create">
+                    <!-- Body Table Area -->
                 </tbody>
             </table>
-            <button type="submit" id="btn-save" class="btn btn-primary ml-2 d-none"><i class="icon-database-add mr-2"></i>Save</button>
         </form>
     </div>
 </div>
@@ -61,15 +129,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var flag = 0;
-
             $("#btn-add").on("click", function () {
+                var _customerid = $('input[name="CustomerID"]').val();
                 var _customername = $('input[name="CustomerName"]').val();
                 var _address = $('input[name="Address"]').val();
                 var _code = $('input[name="Code"]').val();
                 var _startdate = $('input[name="StartDate"]').val();
                 var _endate = $('input[name="EndDate"]').val();
-                var _outletid = $('input[name="OutletID"]').val();
+                var _outletid = $('#select_type').val();
 
+                var _input_customid = '<input type="text" name="item[' + flag + '].CustomerID" class="form-control border-0 py-0" value="' + _customerid + '" readonly />';
                 var _input_customername = '<input type="text" name="item[' + flag + '].CustomerName" class="form-control border-0 py-0" value="' + _customername + '" readonly />';
                 var _input_address = '<input type="text" name="item[' + flag + '].Address" class="form-control border-0 py-0" value="' + _address + '" readonly />';
                 var _input_code = '<input type="text" name="item[' + flag + '].Code" class="form-control border-0 py-0" value="' + _code + '" readonly />';
@@ -77,18 +146,16 @@
                 var _input_enddate = '<input type="text" name="item[' + flag + '].EndDate" class="form-control border-0 py-0" value="' + _endate + '" readonly />';
                 var _input_outletid = '<input type="text" name="item[' + flag + '].OutletID" class="form-control border-0 py-0" value="' + _outletid + '" readonly />';
 
-                var _tr = '<tr id=' + flag + '><td>' + _input_customername + '</td>' +
+                var _tr = '<tr class="text-center" id=' + flag + '><td>' + _input_customid + '</td>' +
+                    '</td><td>' + _input_customername + '</input>' +
                     '</td><td>' + _input_address + '</input>' +
                     '</td><td>' + _input_code + '</input>' +
                     '</td><td>' + _input_startdate + '</input>' +
                     '</td><td>' + _input_enddate + '</input>' +
                     '</td><td>' + _input_outletid + '</input>' +
-                    //'</td><td><button type="button" class="btn btn-danger btn-delete"><i class="icon-trash"></i></button></input>' +
                     '</td></tr>'
 
-
-                ss
-                if (_customername != "" && _outletid != "") {
+                if (_customerid != "" && _customername != "" && _outletid != "") {
                     $("#tbody-create").append(_tr);
                     $("#btn-save").removeClass("d-none");
                     reset();
@@ -96,13 +163,20 @@
                 }
             });
 
+            $('.onlynumber').keyup(function (e) {
+                if (/\D/g.test(this.value)) {
+                    this.value = this.value.replace(/\D/g, '');
+                }
+            });
+
             function reset() {
+                $('input[name="CustomerID"]').val('');
                 $('input[name="CustomerName"]').val('');
                 $('input[name="Address"]').val('');
                 $('input[name="Code"]').val('');
                 $('input[name="StartDate"]').val('');
                 $('input[name="EndDate"]').val('');
-                $('input[name="OutletID"]').val('');
+                $('#select_type').val('');
             }
 
         });
