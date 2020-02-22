@@ -104,10 +104,10 @@ var Select2Selects = function() {
         });
 
         // Add jQuery UI Sortable support
-        $('.sortable-target .select2-selection__rendered').sortable({
-            containment: '.sortable-target',
-            items: '.select2-selection__choice:not(.select2-search--inline)'
-        });
+        //$('.sortable-target .select2-selection__rendered').sortable({
+        //    containment: '.sortable-target',
+        //    items: '.select2-selection__choice:not(.select2-search--inline)'
+        //});
 
 
         //

@@ -22,7 +22,7 @@
             <div class="row pl-3">
                 <div class="col-md-2 pb-0 mb-0">
                     <div class="form-group">
-                        <label asp-for="Customers.CustomerID" class="font-weight-semibold">Customer ID</label>
+                        <label asp-for="Customers.CustomerID" class="font-weight-semibold">Customer ID *</label>
                         <div class="input-group">
                             <input asp-for="Customers.CustomerID" type="text" name="CustomerID" class="form-control onlynumber" value="" placeholder="Customer ID">
                         </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-2 pb-0 mb-0">
                     <div class="form-group">
-                        <label asp-for="Customers.CustomerName" class="font-weight-semibold">Customer Name</label>
+                        <label asp-for="Customers.CustomerName" class="font-weight-semibold">Customer Name *</label>
                         <div class="input-group">
                             <input asp-for="Customers.CustomerName" type="text" name="CustomerName" class="form-control" value="" placeholder="Customer Name">
                         </div>
@@ -92,9 +92,9 @@
                 </div>
                 <div class="col-md-4 pb-0 mb-0">
                     <div class="form-group">
-                        <label class="font-weight-semibold">Outlet Name</label>
-                        <select id="select_type" name="OutletID" class="form-control select" asp-items="@(new SelectList(Model.ListOutlets, "OutletID", "OutletName"))" data-fouc>
-                            <option value="">Select a Outlet</option>
+                        <label class="font-weight-semibold">Outlet Name *</label>
+                        <select id="select_type" name="OutletID" class="form-control select select_type" asp-items="@(new SelectList(Model.ListOutlets, "OutletID", "OutletName"))" data-fouc>
+                            <option>Select a Outlet</option>
                         </select>
                     </div>
                 </div>

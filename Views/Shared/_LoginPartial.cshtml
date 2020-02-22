@@ -7,7 +7,7 @@
     {
         <li class="nav-item">
             <a class="navbar-nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                Hello <span class="font-weight-bold">@User.Identity.Name</span>
+                Hello <span class="font-weight-bold text-white">@User.Identity.Name</span>
             </a>
         </li>
 
@@ -21,14 +21,14 @@
     else
     {
         <li class="nav-item">
-            <a asp-area="Identity" asp-page="/Account/Register" class="navbar-nav-link">
-                <i class="icon-inbox mr-1"></i>
+            <a asp-area="Identity" asp-page="/Account/Register" class="navbar-nav-link btn-link text-white">
+                <i class="icon-gallery mr-1"></i>
                 <span>Register</span>
             </a>
         </li>
         <li class="nav-item">
-            <a asp-area="Identity" asp-page="/Account/Login" class="navbar-nav-link">
-                <i class="icon-inbox-alt mr-1"></i>
+            <a asp-area="Identity" asp-page="/Account/Login" class="navbar-nav-link btn-link text-white">
+                <i class="icon-enter3 mr-1"></i>
                 <span>Login</span>
             </a>
         </li>

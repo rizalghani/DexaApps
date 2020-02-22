@@ -46,6 +46,6 @@ function reset() {
     $('input[name="Code"]').val('');
     $('input[name="StartDate"]').val('');
     $('input[name="EndDate"]').val('');
-    $('#select_type').val('');
+    $("#select_type").trigger("change");
 }
 

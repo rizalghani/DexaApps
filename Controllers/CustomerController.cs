@@ -46,16 +46,25 @@ namespace DexaApps.Controllers
         [HttpPost]
         public IActionResult Create(List<Customers> item)
         {
+            int saveOn = 0;
+
             if (item != null)
             {
                 foreach (Customers model in item)
                 {
-                    model.CreateBy = User.Identity.Name != null ? User.Identity.Name : "System";
-                    model.CreateDate = DateTime.Now;
-
-                    _context.Add(model);
+                    bool check_id_exists = _context.Customers.Where(x => x.CustomerID.Equals(model.CustomerID)).Any();
+                    if (!check_id_exists)
+                    {
+                        model.CreateBy = User.Identity.Name != null ? User.Identity.Name : "System";
+                        model.CreateDate = DateTime.Now;
+                        saveOn = 1;
+                        _context.Add(model);
+                    }
                 }
-                _context.SaveChanges();
+
+                if (saveOn == 1)
+                    _context.SaveChanges();
+
             }
             return RedirectToAction("Index");
         }
