@@ -31,40 +31,44 @@
                 </div>
                 <div class="col-md-2 pb-0 mb-0">
                     <div class="form-group">
-                        <label class="font-weight-semibold">Customer Name</label>
+                        <label asp-for="Customers.CustomerName" class="font-weight-semibold">Customer Name</label>
                         <div class="input-group">
-                            <input type="text" name="CustomerName" class="form-control" value="" placeholder="Customer Name">
+                            <input asp-for="Customers.CustomerName" type="text" name="CustomerName" class="form-control" value="" placeholder="Customer Name">
                         </div>
+                        <span asp-validation-for="Customers.CustomerID" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-2 pb-0 mb-0">
                     <div class="form-group">
-                        <label class="font-weight-semibold">Code</label>
+                        <label asp-for="Customers.Code" class="font-weight-semibold">Code</label>
                         <div class="input-group">
-                            <input type="text" name="Code" class="form-control" value="" placeholder="Code">
+                            <input asp-for="Customers.Code" type="text" name="Code" value="" class="form-control" placeholder="Code">
                         </div>
+                        <span asp-validation-for="Customers.Code" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-2 pb-0 mb-0">
                     <div class="form-group">
-                        <label class="d-block font-weight-semibold">Start Date</label>
+                        <label asp-for="Customers.StartDate" class="d-block font-weight-semibold">Start Date</label>
                         <div class="input-group">
                             <span class="input-group-prepend">
                                 <span class="input-group-text"><i class="icon-calendar22"></i></span>
                             </span>
-                            <input type="text" name="StartDate" class="form-control daterange-single" value="" placeholder="Start Date">
+                            <input asp-for="Customers.StartDate" type="text" name="StartDate" class="form-control daterange-single" value="" placeholder="Start Date">
                         </div>
+                        <span asp-validation-for="Customers.StartDate" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-2 pb-0 mb-0">
                     <div class="form-group">
-                        <label class="font-weight-semibold">End Date</label>
+                        <label asp-for="Customers.EndDate" class="font-weight-semibold">End Date</label>
                         <div class="input-group">
                             <span class="input-group-prepend">
                                 <span class="input-group-text"><i class="icon-calendar22"></i></span>
                             </span>
-                            <input type="text" name="EndDate" class="form-control daterange-single" value="" placeholder="End Date">
+                            <input asp-for="Customers.EndDate" type="text" name="EndDate" class="form-control daterange-single" value="" placeholder="End Date">
                         </div>
+                        <span asp-validation-for="Customers.EndDate" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-2 pb-0 mb-0 mt-3 pt-2">
@@ -125,60 +129,4 @@
     </div>
 </div>
 
-@section Scripts{
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var flag = 0;
-            $("#btn-add").on("click", function () {
-                var _customerid = $('input[name="CustomerID"]').val();
-                var _customername = $('input[name="CustomerName"]').val();
-                var _address = $('input[name="Address"]').val();
-                var _code = $('input[name="Code"]').val();
-                var _startdate = $('input[name="StartDate"]').val();
-                var _endate = $('input[name="EndDate"]').val();
-                var _outletid = $('#select_type').val();
-
-                var _input_customid = '<input type="text" name="item[' + flag + '].CustomerID" class="form-control border-0 py-0" value="' + _customerid + '" readonly />';
-                var _input_customername = '<input type="text" name="item[' + flag + '].CustomerName" class="form-control border-0 py-0" value="' + _customername + '" readonly />';
-                var _input_address = '<input type="text" name="item[' + flag + '].Address" class="form-control border-0 py-0" value="' + _address + '" readonly />';
-                var _input_code = '<input type="text" name="item[' + flag + '].Code" class="form-control border-0 py-0" value="' + _code + '" readonly />';
-                var _input_startdate = '<input type="text" name="item[' + flag + '].StartDate" class="form-control border-0 py-0" value="' + _startdate + '" readonly />';
-                var _input_enddate = '<input type="text" name="item[' + flag + '].EndDate" class="form-control border-0 py-0" value="' + _endate + '" readonly />';
-                var _input_outletid = '<input type="text" name="item[' + flag + '].OutletID" class="form-control border-0 py-0" value="' + _outletid + '" readonly />';
-
-                var _tr = '<tr class="text-center" id=' + flag + '><td>' + _input_customid + '</td>' +
-                    '</td><td>' + _input_customername + '</input>' +
-                    '</td><td>' + _input_address + '</input>' +
-                    '</td><td>' + _input_code + '</input>' +
-                    '</td><td>' + _input_startdate + '</input>' +
-                    '</td><td>' + _input_enddate + '</input>' +
-                    '</td><td>' + _input_outletid + '</input>' +
-                    '</td></tr>'
-
-                if (_customerid != "" && _customername != "" && _outletid != "") {
-                    $("#tbody-create").append(_tr);
-                    $("#btn-save").removeClass("d-none");
-                    reset();
-                    flag++;
-                }
-            });
-
-            $('.onlynumber').keyup(function (e) {
-                if (/\D/g.test(this.value)) {
-                    this.value = this.value.replace(/\D/g, '');
-                }
-            });
-
-            function reset() {
-                $('input[name="CustomerID"]').val('');
-                $('input[name="CustomerName"]').val('');
-                $('input[name="Address"]').val('');
-                $('input[name="Code"]').val('');
-                $('input[name="StartDate"]').val('');
-                $('input[name="EndDate"]').val('');
-                $('#select_type').val('');
-            }
-
-        });
-    </script>
-}
+<script src="~/js/ClientJS/Customer_Create.js"></script>

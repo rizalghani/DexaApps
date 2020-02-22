@@ -9,7 +9,6 @@ namespace DexaApps.Models
     {
         public Customers Customers { get; set; }
         public ICollection<Customers> ListCustomer { get; set; }
-        public Outlets Outelets { get; set; }
         public ICollection<Outlets> ListOutlets { get; set; }
     }
 }
