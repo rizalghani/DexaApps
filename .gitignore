@@ -72,3 +72,4 @@ obj/Debug/netcoreapp2.2/Razor/Views/Test/Index.cshtml.g.cs
 .vs/DexaApps/v16/Server/sqlite3/storage.ide-shm
 .vs/DexaApps/v16/Server/sqlite3/storage.ide-wal
 obj/Debug/netcoreapp2.2/Razor/Views/Customer/_ModalCreate.cshtml.g.cs
+.vs/DexaApps/DesignTimeBuild/.dtbcache
